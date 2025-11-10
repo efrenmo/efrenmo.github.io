@@ -238,10 +238,10 @@
             margin-top: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
         .project-preview:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
         }
         
         .project-preview h3 {
@@ -270,12 +270,62 @@
             border-bottom-color: var(--secondary-color);
         }
         
+        /* Card Styles - FROM UIVERSE.IO */
+        .card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+        
+        .card svg {
+            width: 60px;
+            height: 60px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        
+        .card__content {
+            flex: 1;
+        }
+        
+        .card__title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .card__description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
         /* Footer */
         footer {
             background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
             color: white;
             padding: 3rem 2rem;
             text-align: center;
+            margin-top: 4rem;
         }
         
         .footer-content {
@@ -328,6 +378,20 @@
             section {
                 padding: 40px 0;
             }
+            
+            .card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .card svg {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -358,7 +422,7 @@
                 <div class="about-text">
                     <p>I'm a data engineer with 2+ years of specialized experience architecting and implementing end-to-end ETL pipelines that process complex, large-scale datasets. My background spans financial services, startup environments, and cutting-edge data engineering across cloud platforms.</p>
                     
-                    <p>At Beam Data Ltd, I engineered a production ETL pipeline processing 50+ data sources for a $1M seed-funded startup, reducing processing time by over 60% through Apache Airflow optimization and AWS cloud architecture. "I have extensive experience using modern data stack tools such as dbt, Airbyte, and Snowflake to consolidate fragmented data sources into unified data warehouses. Through hands-on implementations, I've applied analytics engineering practices to streamline data modeling, improve transformation pipelines, and enable comprehensive business intelligence workflows.</p>
+                    <p>At Beam Data Ltd, I engineered a production ETL pipeline processing 50+ data sources for a $1M seed-funded startup, reducing processing time by over 60% through Apache Airflow optimization and AWS cloud architecture. I have extensive experience using modern data stack tools such as dbt, Airbyte, and Snowflake to consolidate fragmented data sources into unified data warehouses. Through hands-on implementations, I've applied analytics engineering practices to streamline data modeling, improve transformation pipelines, and enable comprehensive business intelligence workflows.</p>
                     
                     <p>My focus is on delivering scalable, maintainable data infrastructure that enables teams to make data-driven decisions with confidence. I combine deep technical expertise with strong collaboration skills to translate complex business requirements into robust cloud-based solutions.</p>
                 </div>
@@ -387,7 +451,7 @@
                     <div class="tech-tags">
                         <span class="tech-tag">AWS</span>
                         <span class="tech-tag">Azure</span>
-                        <span class="tech-tag">Google Cloud Platform </span>
+                        <span class="tech-tag">Google Cloud Platform</span>
                         <span class="tech-tag">Snowflake</span>
                     </div>
                 </div>
@@ -436,7 +500,6 @@
                 <div class="tech-category">
                     <h3>🏆 Certifications</h3>
                     <div class="tech-tags">
-                        <!-- <span class="tech-tag">Advanced Tableau</span> -->
                         <span class="tech-tag">Certified Scrum Master</span>
                         <span class="tech-tag">AWS ML Specialty</span>
                         <span class="tech-tag">AWS Cloud Practitioner</span>
@@ -455,6 +518,51 @@
             </div>
         </section>
 
+        <!-- Cards Section -->
+        <section>
+            <h2>Featured Insights</h2>
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                    </svg>
+                    <div class="card__content">
+                        <p class="card__title">Real-Time Data Processing</p>
+                        <p class="card__description">
+                            Building scalable ETL pipelines that process 50+ data sources daily with Apache Airflow and AWS cloud infrastructure for enterprise-grade analytics.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                    </svg>
+                    <div class="card__content">
+                        <p class="card__title">Cloud Architecture</p>
+                        <p class="card__description">
+                            Designing optimized cloud solutions using AWS, Azure, and GCP. Reduced processing time by 60% through infrastructure optimization and automation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                    </svg>
+                    <div class="card__content">
+                        <p class="card__title">Data Quality & Validation</p>
+                        <p class="card__description">
+                            Implementing robust data quality frameworks with automated validation, monitoring, and alerting across production pipelines for enterprise reliability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Coming Soon Section -->
         <section>
             <h2>More Coming Soon</h2>
@@ -468,46 +576,17 @@
         </section>
     </main>
 
-
-        <!-- From Uiverse.io by gharsh11032000 --> 
-        <div class="card">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path></svg>
-          <div class="card__content">
-            <p class="card__title">Card Title</p>
-            <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-          </div>
-        </div>
-        
-
-        <!-- From Uiverse.io by gharsh11032000 -->
-        <div class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
-            </svg>
-            <div class="card__content">
-                <p class="card__title">Card Title</p>
-                <p class="card__description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-                </p>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/efrenmo" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/efrenandresmora/" target="_blank">LinkedIn</a>
+                <a href="mailto:a.efrenmo@gmail.com">Email</a>
             </div>
+            <p class="footer-text">&copy; 2024 Efren Mora | Data Engineer & Analytics | Toronto, Ontario</p>
+            <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.7;">Built with GitHub Pages</p>
         </div>
-
-    
-            <!-- Footer -->
-            <footer>
-                <div class="footer-content">
-                    <div class="social-links">
-                        <a href="https://github.com/efrenmo" target="_blank">GitHub</a>
-                        <a href="https://www.linkedin.com/in/efrenandresmora/" target="_blank">LinkedIn</a>
-                        <a href="mailto:a.efrenmo@gmail.com">Email</a>
-                    </div>
-                    <p class="footer-text">&copy; 2024 Efren Mora | Data Engineer & Analytics | Toronto, Ontario</p>
-                    <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.7;">Built with GitHub Pages</p>
-                </div>
-            </footer>
-        </body>
-        </html>
-
-
-
-
+    </footer>
+</body>
+</html>
