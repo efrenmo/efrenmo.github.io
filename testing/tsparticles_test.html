@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Efren Mora - Data Engineer & Analytics. Building production-grade ETL pipelines and cloud-based data solutions.">
+    <title>Efren Mora | Data Engineer & Analytics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --bg-light: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section with Particles */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #tsparticles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 14px 32px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .about-highlights {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .about-highlights h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .about-highlights ul {
+            list-style: none;
+        }
+        
+        .about-highlights li {
+            padding: 0.6rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-highlights li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Tech Stack Section */
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-category {
+            background: var(--bg-light);
+            padding: 1.8rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tech-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+        
+        .tech-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        
+        .tech-tag {
+            background: white;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary-color);
+        }
+        
+        /* Projects Section */
+        .project-preview {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            margin-top: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-preview:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+        
+        .project-preview h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .project-preview p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .project-link:hover {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+        
+        /* Card Styles - FROM UIVERSE.IO */
+        .card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+        
+        .card svg {
+            width: 60px;
+            height: 60px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        
+        .card__content {
+            flex: 1;
+        }
+        
+        .card__title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .card__description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-text {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .card svg {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="nav-brand">EFREN MORA</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="dashboards.html" class="project-link">Dashboard →</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Particles -->
+    <section class="hero">
+        <div id="tsparticles"></div>
+        <div class="hero-content">
+            <h1>Data Engineer & Analytics</h1>
+            <p>Building production-grade ETL pipelines and cloud-based data solutions that transform complex business problems into actionable insights.</p>
+            <a href="dashboards.html" class="cta-button">View My Dashboard →</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a data engineer with 2+ years of specialized experience architecting and implementing end-to-end ETL pipelines that process complex, large-scale datasets. My background spans financial services, startup environments, and cutting-edge data engineering across cloud platforms.</p>
+                    
+                    <p>At Beam Data Ltd, I engineered a production ETL pipeline processing 50+ data sources for a $1M seed-funded startup, reducing processing time by over 60% through Apache Airflow optimization and AWS cloud architecture. I have extensive experience using modern data stack tools such as dbt, Airbyte, and Snowflake to consolidate fragmented data sources into unified data warehouses. Through hands-on implementations, I've applied analytics engineering practices to streamline data modeling, improve transformation pipelines, and enable comprehensive business intelligence workflows.</p>
+                    
+                    <p>My focus is on delivering scalable, maintainable data infrastructure that enables teams to make data-driven decisions with confidence. I combine deep technical expertise with strong collaboration skills to translate complex business requirements into robust cloud-based solutions.</p>
+                </div>
+                
+                <div class="about-highlights">
+                    <h3>⚡ Key Strengths</h3>
+                    <ul>
+                        <li>End-to-end ETL pipeline architecture and optimization</li>
+                        <li>Cloud infrastructure design (AWS, Azure, GCP)</li>
+                        <li>Data warehouse and lakehouse implementation</li>
+                        <li>Production-grade Python and SQL development</li>
+                        <li>Data quality frameworks and validation</li>
+                        <li>Cross-functional collaboration with business and technical teams</li>
+                        <li>Financial data analysis and market analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h3>☁️ Cloud Platforms</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">Google Cloud Platform</span>
+                        <span class="tech-tag">Snowflake</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3>🔧 Data Engineering</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Apache Airflow</span>
+                        <span class="tech-tag">dbt</span>
+                        <span class="tech-tag">Airbyte</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Delta Lake</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3>💻 Programming</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Bash</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3>📊 Analytics & Visualization</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Metabase</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Plotly</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3>📚 Databases</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Google BigQuery</span>
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">Delta Lake</span>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3>🏆 Certifications</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Certified Scrum Master</span>
+                        <span class="tech-tag">AWS ML Specialty</span>
+                        <span class="tech-tag">AWS Cloud Practitioner</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Project Section -->
+        <section>
+            <h2>Data Projects</h2>
+            <div class="project-preview">
+                <h3>📊 Luxury Watch Market Analytics</h3>
+                <p>This project involved building a robust production ETL pipeline with Apache Airflow and AWS cloud infrastructure, designed to process data from over 50 sources daily for the luxury watch market. My primary focus was on architecting and optimizing the data engineering workflows that delivered real-time market metrics—including price trends, market composition, volatility modeling, and hierarchical brand performance. These metrics powered the front-end charts and displays used for comprehensive market insights.</p>
+                <a href="dashboards.html" class="project-link">Explore the Dashboard →</a>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section>
+            <h2>Featured Insights</h2>
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                    </svg>
+                    <div class="card__content">
+                        <p class="card__title">Real-Time Data Processing</p>
+                        <p class="card__description">
+                            Building scalable ETL pipelines that process 50+ data sources daily with Apache Airflow and AWS cloud infrastructure for enterprise-grade analytics.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                    </svg>
+                    <div class="card__content">
+                        <p class="card__title">Cloud Architecture</p>
+                        <p class="card__description">
+                            Designing optimized cloud solutions using AWS, Azure, and GCP. Reduced processing time by 60% through infrastructure optimization and automation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                    </svg>
+                    <div class="card__content">
+                        <p class="card__title">Data Quality & Validation</p>
+                        <p class="card__description">
+                            Implementing robust data quality frameworks with automated validation, monitoring, and alerting across production pipelines for enterprise reliability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coming Soon Section -->
+        <section>
+            <h2>More Coming Soon</h2>
+            <p style="color: var(--text-light); line-height: 1.8; margin-top: 1rem;">I'm actively building out additional case studies and project showcases. Check back soon for deeper dives into my analytics engineering and big data projects, including:</p>
+            <ul style="margin-top: 1.5rem; margin-left: 2rem; color: var(--text-light); line-height: 2;">
+                <li><strong>Analytics Engineering Case Study:</strong> Consolidating fragmented data sources into Snowflake with dbt transformations and Metabase dashboards</li>
+                <li><strong>Big Data Engineering Portfolio:</strong> NLP-powered content classification system processing 100K+ daily posts</li>
+                <li><strong>Performance Optimization Guide:</strong> How we achieved 90% ETL processing improvement through Airflow optimization</li>
+                <li><strong>Data Quality Frameworks:</strong> Implementing robust validation and monitoring across production pipelines</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/efrenmo" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/efrenandresmora/" target="_blank">LinkedIn</a>
+                <a href="mailto:a.efrenmo@gmail.com">Email</a>
+            </div>
+            <p class="footer-text">&copy; 2024 Efren Mora | Data Engineer & Analytics | Toronto, Ontario</p>
+            <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.7;">Built with GitHub Pages</p>
+        </div>
+    </footer>
+
+    <!-- tsParticles Library -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+    <!-- Initialize tsParticles -->
+    <script>
+        tsParticles.load("tsparticles", {
+            background: {
+                color: {
+                    value: "transparent"
+                }
+            },
+            fpsLimit: 60,
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        area: 800
+                    }
+                },
+                color: {
+                    value: "#ffffff"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                links: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outModes: {
+                        default: "out"
+                    }
+                }
+            },
+            interactivity: {
+                detectsOn: "canvas",
+                events: {
+                    onHover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onClick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        links: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        quantity: 4
+                    }
+                }
+            },
+            detectRetina: true
+        });
+    </script>
+</body>
+</html>
+```
+
+## Key Changes Made:
+
+### 1. **Replaced particles.js with tsParticles**
+- Changed `<div id="particles-js">` to `<div id="tsparticles">`
+- Updated CSS to target `#tsparticles` instead of `#particles-js`
+- Replaced CDN link from particles.js to tsParticles v2
+
+### 2. **Updated Configuration Syntax**
+- `particlesJS()` → `tsParticles.load()`
+- `line_linked` → `links`
+- `out_mode` → `outModes.default`
+- `retina_detect` → `detectRetina`
+- `particles_nb` → `quantity`
+
+### 3. **Benefits of tsParticles**
+- ✅ Actively maintained (particles.js is deprecated)
+- ✅ Better performance
+- ✅ More features and customization options
+- ✅ TypeScript support
+- ✅ Better mobile compatibility
+- ✅ Backwards compatible with particles.js configs
+
+The visual effect remains **identical** to what you had before—white particles with connecting lines, hover grab effect, and click to add particles. The code is now future-proof and uses the modern, maintained library!
