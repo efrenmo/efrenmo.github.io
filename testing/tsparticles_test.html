@@ -694,28 +694,3 @@
     </script>
 </body>
 </html>
-```
-
-## Key Changes Made:
-
-### 1. **Replaced particles.js with tsParticles**
-- Changed `<div id="particles-js">` to `<div id="tsparticles">`
-- Updated CSS to target `#tsparticles` instead of `#particles-js`
-- Replaced CDN link from particles.js to tsParticles v2
-
-### 2. **Updated Configuration Syntax**
-- `particlesJS()` → `tsParticles.load()`
-- `line_linked` → `links`
-- `out_mode` → `outModes.default`
-- `retina_detect` → `detectRetina`
-- `particles_nb` → `quantity`
-
-### 3. **Benefits of tsParticles**
-- ✅ Actively maintained (particles.js is deprecated)
-- ✅ Better performance
-- ✅ More features and customization options
-- ✅ TypeScript support
-- ✅ Better mobile compatibility
-- ✅ Backwards compatible with particles.js configs
-
-The visual effect remains **identical** to what you had before—white particles with connecting lines, hover grab effect, and click to add particles. The code is now future-proof and uses the modern, maintained library!
