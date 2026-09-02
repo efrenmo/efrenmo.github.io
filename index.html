@@ -4,510 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Efren Mora - Data Engineer & Analytics. Building production-grade ETL pipelines and cloud-based data solutions.">
-    <title>Efren Mora | Data Engineer & Analytics</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #f093fb;
-            --text-dark: #2d3436;
-            --text-light: #636e72;
-            --bg-light: #f8f9fa;
-            --border-color: #e9ecef;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #fff;
-        }
-        
-        /* Navigation */
-        nav {
-            background-color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-brand {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        /* Hero Section with Particles */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 80px 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        #tsparticles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-
-        .hero-logo {
-            width: 550px;
-            height: auto;
-            margin-bottom: 2rem;
-            animation: fadeInScale 0.8s ease-in-out;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease-in-out 0.3s both;
-        }
-
-        /* Subtle entrance animations */
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Hidden Hero Content */
-        .hero h1 {
-            display: none;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .hero p {
-            display: none;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button {
-            display: none;
-            /* display: inline-block; */
-            background-color: white;
-            color: var(--primary-color);
-            padding: 14px 32px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button:hover {
-            display: none;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        
-        /* Main Content */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        section:last-of-type {
-            border-bottom: none;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            border-radius: 2px;
-        }
-        
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-            margin-top: 2rem;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.2rem;
-            color: var(--text-light);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-        
-        .about-highlights {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .about-highlights h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-        
-        .about-highlights ul {
-            list-style: none;
-        }
-        
-        .about-highlights li {
-            padding: 0.6rem 0;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-        }
-        
-        .about-highlights li::before {
-            content: '✓';
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-right: 0.8rem;
-            font-size: 1.2rem;
-        }
-        
-        /* Tech Stack Section */
-        .tech-stack {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .tech-category {
-            background: var(--bg-light);
-            padding: 1.8rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .tech-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
-        }
-        
-        .tech-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-        
-        .tech-tag {
-            background: white;
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid var(--primary-color);
-        }
-        
-        /* Projects Section */
-        .project-preview {
-            background: var(--bg-light);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border-left: 5px solid var(--primary-color);
-            margin-top: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-preview:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
-        }
-        
-        .project-preview h3 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-        }
-        
-        .project-preview p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        .project-link {
-            display: inline-block;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        .project-link:hover {
-            color: var(--secondary-color);
-            border-bottom-color: var(--secondary-color);
-        }
-        
-        /* Card Styles - FROM UIVERSE.IO */
-        .card {
-            background: var(--bg-light);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
-        }
-        
-        .card svg {
-            width: 60px;
-            height: 60px;
-            color: var(--primary-color);
-            flex-shrink: 0;
-        }
-        
-        .card__content {
-            flex: 1;
-        }
-        
-        .card__title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .card__description {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-        
-        .footer-text {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.95rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-            
-            section {
-                padding: 40px 0;
-            }
-            
-            .card {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .card svg {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Efren Mora | Data Engineer & Analytics</title>    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Sticky Navigation Overlaid on Hero -->
     <nav>
-        <a href="index.html" class="nav-brand">EFREN MORA</a>
+        <a href="index.html" class="nav-brand">HOME</a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="dashboards.html" class="project-link">Dashboard →</a></li>
+            <!-- <li><a href="dashboards.html" class="project-link">Dashboard →</a></li> -->
         </ul>
     </nav>
 
-    <!-- Hero Section with Particles -->
-    <section class="hero">
-        <div id="tsparticles"></div>
+    <!-- Hero Section with Particles -->   
+    <section class="hero"> 
+        <div id="tsparticles"></div>       
+
+        <!-- Hero Content -->              
         <div class="hero-content">
-            <img src="https://raw.githubusercontent.com/efrenmo/efrenmo.github.io/main/elements/Efren_White_Logo_Rect.png" alt="Efren Mora Logo" class="hero-logo">
-            <p class="hero-subtitle">Data Engineer & Analytics</p>
-        </div>
+            <img src="/elements/efren_logo_blue_newfont1.png" alt="Efren Mora Logo" class="hero-logo">
+            <!-- <p class="hero-subtitle">Data Engineer & Analytics</p> -->
+            <p class="hero-tagline">Building production-grade ETL pipelines and cloud-based data
+                solutions that transform complex business problems into actionable insights.</p>
+        </div>        
     </section>
+    
 
     <!-- Main Content -->
     <main>
         <!-- About Section -->
         <section id="about">
             <h2>About Me</h2>
+            <!-- Photo and Text Layout -->
             <div class="about-content">
+                <div class="about-photo">
+                    <img src="https://raw.githubusercontent.com/efrenmo/efrenmo.github.io/main/elements/photo/efren-halo-photo.jfif" alt="Efren Mora" class="profile-photo">
+                </div>
+
+
                 <div class="about-text">
-                    <p>I'm a data engineer with 2+ years of specialized experience architecting and implementing end-to-end ETL pipelines that process complex, large-scale datasets. My background spans financial services, startup environments, and cutting-edge data engineering across cloud platforms.</p>
+                    <p>I'm an Experienced Data Professional with end-to-end involvement in the data project life cycle—from pipeline 
+                        architecture to business analytics—in a start-up environment.</p>
                     
-                    <p>At Beam Data Ltd, I engineered a production ETL pipeline processing 50+ data sources for a $1M seed-funded startup, reducing processing time by over 60% through Apache Airflow optimization and AWS cloud architecture. I have extensive experience using modern data stack tools such as dbt, Airbyte, and Snowflake to consolidate fragmented data sources into unified data warehouses. Through hands-on implementations, I've applied analytics engineering practices to streamline data modeling, improve transformation pipelines, and enable comprehensive business intelligence workflows.</p>
+                    <p>Previously, I worked in financial services operations as an analyst at TD Waterhouse and Bank of America, 
+                        bringing financial domain knowledge and operational excellence to both engineering and analytics challenges.</p>
                     
-                    <p>My focus is on delivering scalable, maintainable data infrastructure that enables teams to make data-driven decisions with confidence. I combine deep technical expertise with strong collaboration skills to translate complex business requirements into robust cloud-based solutions.</p>
+                    <p>I enjoy tackling technical challenges around performance optimization, data quality, and pipeline reliability, 
+                        as well as learning about emerging tools and methodologies.</p>
+                    
+                    <p>Working with startups or innovative companies where my work has visible impact excites me—whether that's 
+                        enabling real-time analytics, powering machine learning models, or creating data products that drive revenue.</p>
+
+                    <p>I welcome opportunities to work with collaborative, cross-functional teams where I partner with data scientists, 
+                        analysts, product managers, and business stakeholders to translate complex requirements into robust technical 
+                        implementations.</p>
+
                 </div>
+            </div>
                 
-                <div class="about-highlights">
-                    <h3>⚡ Key Strengths</h3>
-                    <ul>
-                        <li>End-to-end ETL pipeline architecture and optimization</li>
-                        <li>Cloud infrastructure design (AWS, Azure, GCP)</li>
-                        <li>Data warehouse and lakehouse implementation</li>
-                        <li>Production-grade Python and SQL development</li>
-                        <li>Data quality frameworks and validation</li>
-                        <li>Cross-functional collaboration with business and technical teams</li>
-                        <li>Financial data analysis and market analytics</li>
-                    </ul>
-                </div>
+            <!-- Key Strengths Section (moved below) -->
+            <div class="about-highlights">
+                <h3>⚡ Key Strengths</h3>
+                <ul>
+                    <li>End-to-end ETL pipeline architecture and optimization</li>
+                    <li>Cloud infrastructure design (AWS, Azure, GCP)</li>
+                    <li>Data warehouse and lakehouse implementation</li>
+                    <li>Production-grade Python and SQL development</li>
+                    <li>Data quality frameworks and validation</li>
+                    <li>Cross-functional collaboration with business and technical teams</li>
+                    <li>Financial data analysis and market analytics</li>
+                </ul>
+            </div>          
+        </section>
+
+       
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section-wide section-band">
+            <h2>Portfolio</h2>
+            
+            <div class="portfolio-grid" aria-live="polite">
+                <!-- Cards rendered from js/portfolio-data.js -->
             </div>
         </section>
 
+
+        
         <!-- Tech Stack Section -->
         <section id="skills">
             <h2>Technical Skills</h2>
@@ -574,18 +160,10 @@
             </div>
         </section>
 
-        <!-- Featured Project Section -->
-        <section>
-            <h2>Data Projects</h2>
-            <div class="project-preview">
-                <h3>📊 Luxury Watch Market Analytics</h3>
-                <p>This project involved building a robust production ETL pipeline with Apache Airflow and AWS cloud infrastructure, designed to process data from over 50 sources daily for the luxury watch market. My primary focus was on architecting and optimizing the data engineering workflows that delivered real-time market metrics—including price trends, market composition, volatility modeling, and hierarchical brand performance. These metrics powered the front-end charts and displays used for comprehensive market insights.</p>
-                <a href="dashboards.html" class="project-link">Explore the Dashboard →</a>
-            </div>
-        </section>
+
 
         <!-- Cards Section -->
-        <section>
+        <section class="section-wide section-band">
             <h2>Featured Insights</h2>
             <div class="cards-container">
                 <!-- Card 1 -->
@@ -643,17 +221,74 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <!-- <footer>
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://github.com/efrenmo" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/efrenandresmora/" target="_blank">LinkedIn</a>
                 <a href="mailto:a.efrenmo@gmail.com">Email</a>
             </div>
-            <p class="footer-text">&copy; 2024 Efren Mora | Data Engineer & Analytics | Toronto, Ontario</p>
+            <p class="footer-text">&copy; 2025 Efren Mora | Data Engineer & Analytics | Toronto, Ontario</p>
+            <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.7;">Built with GitHub Pages</p>
+        </div>
+    </footer> -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-buttons-container">
+                <!-- GitHub Button -->
+                <div class="social-button github">
+                    <a href="https://github.com/efrenmo" target="_blank">
+                        <button>
+                            <div class="floater"></div>
+                            <div class="icon">
+                                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.17 6.839 9.481.5.092.683-.217.683-.481 0-.237-.009-.866-.013-1.699-2.782.603-3.37-1.338-3.37-1.338-.454-1.15-1.11-1.458-1.11-1.458-.906-.619.069-.606.069-.606 1.002.071 1.527 1.03 1.527 1.03.89 1.529 2.34 1.087 2.911.831.091-.645.348-1.087.634-1.338-2.22-.252-4.555-1.11-4.555-4.94 0-1.09.39-1.986 1.028-2.682-.103-.252-.446-1.268.098-2.642 0 0 .837-.268 2.75 1.024a9.563 9.563 0 012.496-.335 9.58 9.58 0 012.496.335c1.913-1.292 2.75-1.024 2.75-1.024.544 1.374.202 2.39.1 2.642.64.696 1.027 1.592 1.027 2.682 0 3.839-2.338 4.685-4.567 4.933.358.309.678.916.678 1.847 0 1.334-.012 2.412-.012 2.74 0 .267.18.577.688.481A12.01 12.01 0 0022 12c0-5.523-4.477-10-10-10z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+
+                <!-- LinkedIn Button -->
+                <div class="social-button linkedin">
+                    <a href="https://www.linkedin.com/in/efrenandresmora/" target="_blank">
+                        <button>
+                            <div class="floater"></div>
+                            <div class="icon">
+                                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20,2H4C2.9,2,2,2.9,2,4v16c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V4C22,2.9,21.1,2,20,2z M8.5,19H6V10h2.5V19z M7.3,9h-0.1C6.4,9,6,8.6,6,8.1V7.9c0-0.5,0.4-0.9,0.9-0.9h0.1C7.6,7,8,7.4,8,7.9v0.1C8,8.6,7.6,9,7.3,9z M19,19h-2.5v-4.9c0-1.2-0.4-2-1.4-2c-0.8,0-1.3,0.6-1.5,1.2h-0.1V19H10V10h2.3v1.3h0C12.7,10.7,14,9.9,15.5,9.9c2.1,0,3.5,1.4,3.5,3.8V19z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+
+                <!-- Email Button -->
+                <div class="social-button email">
+                    <a href="mailto:a.efrenmo@gmail.com">
+                        <button>
+                            <div class="floater"></div>
+                            <div class="icon">
+                                <svg height="32" width="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28 5H4c-1.104 0-2 .896-2 2v18c0 1.104.896 2 2 2h24c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2zm0 4.879L16 18 4 9.879V7l12 8 12-8v2.879zM4 23V11.885l11.446 7.63c.269.18.594.274.921.274s.652-.094.92-.274L28 11.885V23H4z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <p class="footer-text">&copy; 2025 Efren Mora | Data Engineer & Analytics | Toronto, Ontario</p>
             <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.7;">Built with GitHub Pages</p>
         </div>
     </footer>
+
+
+    <!-- Portfolio -->
+    <script src="js/portfolio-data.js"></script>
+    <script src="js/portfolio.js"></script>
 
     <!-- tsParticles Library -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
@@ -674,14 +309,14 @@
             fpsLimit: 60,        
             particles: {
                 number: {
-                    value: 80,
+                    value: 50,
                     density: {
                         enable: true,
                         area: 800
                     }
                 },
                 color: {
-                    value: "#ffffff"
+                    value: "#223c99" // "#667eea"
                 },
                 shape: {
                     type: "circle"
@@ -696,14 +331,14 @@
                 },
                 links: {
                     enable: true,
-                    distance: 150,
-                    color: "#ffffff",
+                    distance: 200,
+                    color: "#223c99", // "#667eea"
                     opacity: 0.4,
                     width: 1
                 },
                 move: {
                     enable: true,
-                    speed: 1,
+                    speed: 0.7,
                     direction: "none",
                     random: false,
                     straight: false,
@@ -741,5 +376,18 @@
             detectRetina: true
         });
     </script>
+
+    <!-- Smooth Nav Background on Scroll -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 1)';  // Fully opaque
+            } else {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';  // Slightly transparent
+            }
+        });
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,35 @@
+/* Design tokens — change fonts, colors, and shared type settings here. */
+
+:root {
+    --font-sans: "Montserrat", sans-serif;
+    --font-weight-body: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --primary-color: #223c99;
+    --secondary-color: #764ba2;
+    --accent-color: #f093fb;
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --bg-light: #f8f9fa;
+    --bg-band: #f4f6f8;
+    --border-color: #e9ecef;
+
+    /* Reading column vs visual/card sections */
+    --content-width: 1200px;
+    --content-width-wide: 1520px;
+    --nav-height: 4.0625rem;
+
+    /* Portfolio grid — change --portfolio-columns to retile the cards.
+       Image fit: "contain" shows the full image (letterbox if needed);
+       "cover" fills the card and crops overflow. */
+    --portfolio-columns: 3;
+    --portfolio-columns-medium: 2;
+    --portfolio-columns-narrow: 1;
+    --portfolio-gap: 1.5rem;
+    --portfolio-card-aspect-ratio: 363 / 250;
+    --portfolio-image-fit: contain;
+    --portfolio-image-position: center;
+    --portfolio-icon-size: 80px;
+}
